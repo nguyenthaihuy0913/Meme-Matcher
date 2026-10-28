@@ -1,0 +1,24 @@
+{
+  "evaluation": "stratified original-image folds; no augmented images; labels 1-13 only",
+  "limitation": "People are not identified in image folders; this is not an unseen-person evaluation. Class 0 is synthetic and excluded from validation.",
+  "folds": 2,
+  "original_images": 476,
+  "class_counts": {
+    "1": 137,
+    "2": 2,
+    "3": 8,
+    "4": 137,
+    "5": 15,
+    "6": 15,
+    "7": 15,
+    "8": 4,
+    "9": 5,
+    "10": 130,
+    "11": 2,
+    "12": 2,
+    "13": 4
+  },
+  "logistic_regression_accuracy": 0.9390756302521008,
+  "mlp_accuracy": 0.9621848739495797,
+  "selected_model": "MLP"
+}

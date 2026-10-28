@@ -1,0 +1,1 @@
+{"name":"meme-lab","private":true,"type":"module","scripts":{"start":"node server.mjs","test":"node --test"},"dependencies":{"@mediapipe/tasks-vision":"^0.10.35"}}

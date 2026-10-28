@@ -1,0 +1,20 @@
+import {readFile,writeFile,copyFile,mkdir} from 'node:fs/promises';
+import {predictModel} from '../public/ml.js';
+const read=async path=>JSON.parse(await readFile(path,'utf8'));
+const model=await read('scratch/candidate_weights.json');
+const report=await read('scratch/evaluation_v2.json');
+const reference=await read('scratch/inference_parity.json');
+if(model.training.selected_model!==report.selected_model)throw new Error('Candidate/report mismatch');
+if(report.results[report.selected_model].balanced_accuracy<report.results.legacy_mlp_20.balanced_accuracy)throw new Error('Candidate is worse than baseline');
+let maxError=0;
+reference.rows.forEach((row,i)=>{
+  const probabilities=predictModel(model,row);
+  reference.classes.forEach((id,j)=>{maxError=Math.max(maxError,Math.abs(probabilities[id]-reference.probabilities[i][j]));});
+});
+if(!Number.isFinite(maxError)||maxError>1e-6)throw new Error(`Python/JS inference mismatch: ${maxError}`);
+await mkdir('scratch/model-backup',{recursive:true});
+const stamp=new Date().toISOString().replaceAll(':','-');
+for(const ext of ['json','js'])await copyFile(`public/model_weights.${ext}`,`scratch/model-backup/${stamp}.${ext}`);
+await writeFile('public/model_weights.json',JSON.stringify(model,null,2));
+await writeFile('public/model_weights.js',`export const modelWeights = ${JSON.stringify(model)};\n`);
+console.log(JSON.stringify({installed:report.selected_model,maxInferenceError:maxError,features:model.features.length}));

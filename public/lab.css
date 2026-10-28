@@ -1,0 +1,23 @@
+*{box-sizing:border-box}body{margin:0;background:#10131c;color:#edf1ff;font:15px system-ui,sans-serif}header,main{max-width:1400px;margin:auto;padding:24px}header{display:flex;justify-content:space-between;align-items:center}small{color:#91a5c5;letter-spacing:2px;font-size:11px}h1{font-size:34px;margin:8px 0}h1 span{font-size:14px;color:#9cb0d1}h2{font-size:19px;margin:12px 0}main{display:grid;grid-template-columns:minmax(0,2fr) minmax(290px,1fr);gap:20px;padding-top:0}.panel{background:#1a2030;border:1px solid #303a50;border-radius:18px;padding:20px}.bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.bar h2{margin-right:auto}.tag{color:#8ee5bf;font-size:13px}.stage{background:#0b0f17;border-radius:12px;position:relative;aspect-ratio:4/3;overflow:hidden;margin-top:15px}video,canvas{position:absolute;width:100%;height:100%;object-fit:contain;transform:scaleX(-1)}#placeholder{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#9babc2;padding:30px}button,input,select{font:inherit;border-radius:9px;padding:11px;border:1px solid #42506b}button{background:#adf0c9;color:#11251a;cursor:pointer;font-weight:650}button:disabled{opacity:.4;cursor:default}input,select{background:#101724;color:#fff;width:100%;margin:8px 0 14px}label{display:block;margin-top:18px;color:#c6d1e5}.hint{color:#9baac2;font-size:13px;line-height:1.6}#tracking{color:#9db4d8;font-size:13px}.prediction{display:flex;align-items:center;gap:12px;padding:10px;margin-top:9px;background:#252e43;border-radius:10px}.prediction img{width:48px;height:48px;object-fit:contain;background:white;border-radius:7px}.prediction strong{flex:1}.gallery{grid-column:1/-1}.gallery .bar span{color:#9baac2;font-size:13px}#memes{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:15px}.meme{background:#252d40;color:#eef3ff;text-align:left;border:1px solid #3b4660;padding:10px}.meme img{width:100%;height:125px;object-fit:contain;background:#fff;border-radius:7px}.meme b{display:block;margin:8px 0}.meme span{font-size:11px;line-height:1.5;color:#b7c6dd}.selected{outline:2px solid #adf0c9}#record{width:100%}#recordStatus,#status{line-height:1.5;color:#c4d1e7}@media(max-width:850px){main{grid-template-columns:1fr}.gallery{grid-column:auto}header,main{padding:14px}.tag{font-size:11px}}
+/* Camera, predictions and collection stay alongside each other on desktop. */
+header,main{max-width:1660px}
+main{grid-template-columns:minmax(0,1.8fr) minmax(235px,.8fr) minmax(270px,1fr);align-items:start}
+.predictions-panel{padding:18px}
+#predictionState{color:#e9c889;background:#302d28;padding:10px;border-radius:8px;font-size:13px;line-height:1.5}
+#predictionState.matched{color:#adf0c9;background:#233c32}
+#predictions{display:grid;gap:12px}
+.prediction-empty{padding:36px 16px;border:1px dashed #45516b;border-radius:12px;color:#9baac2;text-align:center;line-height:1.6}
+.prediction-card{padding:12px;border:1px solid #38435a;border-radius:12px;background:#222a3c;opacity:.7;transition:background .15s,border-color .15s}
+.prediction-card img{width:100%;height:100px;object-fit:contain;background:#e0e4ec;border-radius:8px;margin:9px 0}
+.prediction-card strong{display:block;font-size:14px}
+.prediction-rank{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#adbbd1}
+.prediction-rank span{font-size:22px;font-weight:750;color:#eff4ff}
+.prediction-rank small{font-size:10px;letter-spacing:0;margin-left:2px}
+.prediction-card.leader{opacity:1;background:#244337;border:2px solid #adf0c9;box-shadow:0 0 22px #83e6b51a}
+.prediction-card.leader img{height:165px;background:white}
+.prediction-card.leader .prediction-rank{color:#adf0c9;font-weight:700}
+.score-track{height:6px;background:#101724;border-radius:5px;overflow:hidden;margin-top:10px}
+.score-track div{height:100%;background:#7688a8;border-radius:5px;transition:width .1s}
+.leader .score-track div{background:#adf0c9}
+@media(max-width:1150px){main{grid-template-columns:minmax(0,1.7fr) minmax(235px,.8fr)}main>aside:not(.predictions-panel){grid-column:1/-1}.stage{margin-top:15px}}
+@media(max-width:650px){main{grid-template-columns:1fr}.predictions-panel{grid-column:1}#predictions{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.prediction-card{padding:7px}.prediction-card img,.prediction-card.leader img{height:90px}.prediction-rank{flex-wrap:wrap;font-size:10px}.prediction-rank span{font-size:17px}.prediction-card strong{font-size:11px}.gallery{grid-column:1}}
