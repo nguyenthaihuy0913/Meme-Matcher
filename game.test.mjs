@@ -21,6 +21,13 @@ test('stable evidence passes once and resets hold for next meme',()=>{
  assert.equal(game.completed,1);assert.notEqual(game.target,first);assert.equal(game.hold,0);
  game.observe(prediction(first),800);assert.equal(game.completed,1);
 });
+test('completing a meme resets the 20-second timer for the next meme',()=>{
+ const game=new MemeGame();game.start(0);hold(game,15000);
+ assert.equal(game.completed,1);assert.equal(game.state,'playing');
+ assert.equal(game.remaining(15700),DURATION);
+ game.tick(30000);assert.equal(game.state,'playing');assert.equal(game.remaining(30000),5700);
+ game.tick(35700);assert.equal(game.state,'finished');assert.equal(game.reason,'timeout');assert.equal(game.completed,1);
+});
 test('tracking gap does not count toward hold time',()=>{
  const game=new MemeGame();game.start(0);game.observe(prediction(game.target),0);game.observe(prediction(game.target),HOLD_TIME+1);
  assert.equal(game.completed,0);assert.equal(game.hold,0);

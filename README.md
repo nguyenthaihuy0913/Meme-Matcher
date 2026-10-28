@@ -6,7 +6,7 @@ Game showcase chủ đề ngân hà cho 9.5AI Club, FPT University campus Hồ C
 
 Chạy `npm start` và mở http://localhost:5173 bằng Chrome hoặc Edge. Bấm **Bắt đầu thử thách**, cấp quyền camera, vào vị trí trong 3 giây đếm ngược.
 
-- Mỗi lượt chọn 5 meme khác nhau từ 13 meme hiện có. Tổng thời gian: **20 giây**.
+- Mỗi lượt chọn 5 meme khác nhau từ 13 meme hiện có. Thời gian cho mỗi meme: **20 giây**.
 - Nhái meme bên trái. Camera bên phải có skeleton mặt/tay/thân; tọa độ z điều chỉnh độ dày khớp và đường nối để gợi chiều sâu trên lớp phủ 2D, không phải mô hình 3D xoay tự do.
 - Điểm khớp (%) là điểm của bộ phân loại dành cho **meme mục tiêu**, không phải xác suất hay độ giống ảnh theo pixel. Đạt ít nhất 62%, đúng nhãn mục tiêu và giữ liên tục 650 ms để qua meme. Ngưỡng nằm trong `public/game.js`.
 - Vượt cả 5 meme là thắng. Hết giờ, dừng lượt hoặc camera ngắt sẽ hiện kết quả cùng 1 trong **20 thông điệp** do ban tổ chức cung cấp.

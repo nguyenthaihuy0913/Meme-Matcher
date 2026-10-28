@@ -66,6 +66,7 @@ export class MemeGame {
     if (this.hold < 1) return false;
     this.completed++; this.holdStart = null; this.lastSample = null; this.hold = 0; this.match = 0;
     if (this.completed === 5) this.finish(now, 'win');
+    else this.deadline = now + DURATION;
     return true;
   }
 }
